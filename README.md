@@ -37,7 +37,7 @@ Things you may want to cover:
 |birthday           |date   |null: false               |
 
 -has_many :items
--has_many :management
+-has_many :managements
 
 <!-- itemsテーブル -->
 
