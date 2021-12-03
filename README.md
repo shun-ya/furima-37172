@@ -37,7 +37,7 @@ Things you may want to cover:
 |birthday           |date   |null: false               |
 
 -has_many :items
--has_one :management
+-has_many :management
 
 <!-- itemsテーブル -->
 
@@ -66,6 +66,7 @@ Things you may want to cover:
 
 -belongs_to :user
 -belongs_to :item
+-has_one :shipping
 
 <!-- shippingテーブル -->
 
