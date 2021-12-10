@@ -52,9 +52,29 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Ship day can't be blank")
       end
       it "costが空だと出品できない" do
-      @item.cost = ''
-      @item.valid?
-      expect(@item.errors.full_messages).to include("Cost can't be blank")
+        @item.cost = ''
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Cost can't be blank")
+      end
+      it "costが299円以下では出品できない" do
+        @item.cost = '111'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Cost Out of setting range")
+      end
+      it "costが10_000_000円以上では出品できない" do
+        @item.cost = '10000000000'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Cost Out of setting range")
+      end
+      it "costは数字以外の入力が含まれていると出品できない" do
+        @item.cost = 'ああ'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Cost Out of setting range")
+      end
+      it "userが紐づいてないと出品できない" do
+        @item.user = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("User must exist")
       end
     end
   end
