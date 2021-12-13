@@ -27,7 +27,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     redirect_to root_path unless current_user.id == @item.user_id
   end
- end
+ 
 
   def update
     @item = Item.find(params[:id])
@@ -47,6 +47,7 @@ class ItemsController < ApplicationController
   def contributor_confirmation
     redirect_to new_user_session_path unless user_signed_in?
   end
+end
 
 
 
