@@ -8,7 +8,7 @@ class OrderShipping
   validates :prefecture_id, presence: true, numericality: { other_than: 1, message: "can't be blank" }
   validates :city, presence: true, format: {with: /\A[ぁ-んァ-ケ一-龥々]/, message: "is invalid."}
   validates :address, presence: true
-  validates :phone_number, presence: true, format: {with: /\d{10}\z|\A\d{11}\z/, message: "is invalid." }
+  validates :phone_number, presence: true, format: {with: /\A\d{10,11}\z/, message: "is invalid." }
   validates :token, presence: true
 
   def save
