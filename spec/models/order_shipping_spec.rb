@@ -3,10 +3,11 @@ require 'rails_helper'
 RSpec.describe OrderShipping, type: :model do
   describe '購入する' do
     before do
-      @order_shipping = FactoryBot.build(:order_shipping)
-      @use = FactoryBot.build(:user)
-      @item = FactoryBot.build(:user)
-    end
+      @user = FactoryBot.create(:user)
+      @item = FactoryBot.create(:item)
+      sleep 1
+      @order_shipping = FactoryBot.build(:order_shipping, user_id: @user.id, item_id: @item.id)
+      end
 
     context '購入できるとき' do
       it '全ての条件を入力すると購入できる' do
